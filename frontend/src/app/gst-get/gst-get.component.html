@@ -1,0 +1,25 @@
+<table class="table table-hover">
+
+  <thead>
+      <tr>
+          <td>##</td>
+        <td>Person Name</td>
+        <td>business Name</td>
+        <td>GST number</td>
+        <td colspan="1">Actions</td>
+        <td colspan="4"><button [disabled]="!disableCheckbox" (click)="deleteBusiness()" class="btn btn-danger color">Delete All</button></td>
+      </tr>
+
+  </thead>
+  <tbody>
+    <tr *ngFor="let business of businessess;let i=index"> 
+    <td> <input type="checkbox" [checked]="business.checked" (click)="changeCheck($event,i)"></td> 
+      <td>{{business.person_name}}</td>
+      <td>{{business.business_name}}</td>
+      <td>{{business.business_gst_number}}</td>
+      <td><button [disabled]="!business.checked" [routerLink]="['edit',business._id]" class="btn btn-primary color">Edit</button></td>
+      <td><button [disabled]="!business.checked"  (click) = "deleteBusiness(business._id)" class="btn btn-danger color">Delete</button></td>
+
+    </tr>
+  </tbody>
+</table>
