@@ -10,6 +10,9 @@ let Business= new Schema({
     },
     business_gst_number:{
         type:Number
+    },
+    image:{
+        type:String
     }
 },{
     collection : 'business'

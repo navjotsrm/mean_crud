@@ -18,45 +18,55 @@ export class GstGetComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.bs.getBusiness().subscribe((data:Business[])=>{
-      this.businessess=data;
-      data.forEach(x=>{
-        x.checked=false;
-      })
-     
-})
+  this.getData();
   }
 
-  changeCheck(e,i){
-    // debugger;
-  //  this.disableCheckbox = e.target.checked;
-  if(e.target.checked){
 
-    this.businessess[i].checked=true;
-    if(i>=1){
-      this.disableCheckbox=true;
-    }else{
-      this.disableCheckbox=false;
-    }
+getData(){
+  this.bs.getBusiness().subscribe((data:Business[])=>{
+    this.businessess=data;
+    this.businessess.forEach(x=>{
+      x.checked=false;
+    })
    
+})
+}
+  changeCheck(e,i){
+    
+  if(e.target.checked){
+    this.businessess[i].checked=true;
   }else{
-    // debugger;
     this.businessess[i].checked=false;
-    this.disableCheckbox=false;
   }
-   //alert(bbusiness[i].checked);
+  this.deleteAllDisableEnable();
+  }
+
+  deleteAllDisableEnable(){
+    // debugger;
+  let deleteenable:any=  this.businessess.filter(x=>{
+   return   x.checked==true;
+    })
+      if(deleteenable.length>1){
+        this.disableCheckbox=true;
+      } else{
+        this.disableCheckbox=false;
+      }       
+           
   }
 
   deleteBusiness(id:any){
     this.bs.deleteBusinessData(id).subscribe(res=>{
-      for(let i = 0; i < this.businessess.length; ++i){
-        if (this.businessess[i]["_id"] === id) {
-            this.businessess.splice(i,1);
-        }
-    }
-
+    this.getData();
       console.log(res);  
-
     })
+  }
+  deleteBusinessAll(){
+    let deleteenable:any=  this.businessess.filter(x=>{
+      return   x.checked==true;
+       })
+       deleteenable.forEach(y => {
+         this.deleteBusiness(y._id);
+       }); 
+      // $in:["_id","deleteenable"]
   }
 }

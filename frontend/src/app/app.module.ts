@@ -9,6 +9,7 @@ import { GstEditComponent } from './gst-edit/gst-edit.component';
 import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+// import { FileSelectDirective } from 'ng2-file-upload';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     SlimLoadingBarModule,
     ReactiveFormsModule,FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    // FileSelectDirective
     
   ],
   providers: [],

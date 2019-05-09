@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Business } from 'src/business';
@@ -19,12 +19,15 @@ export class BusinessService {
     console.log(url)
   }
 
-  addBusiness(person_name,business_name, business_gst_number){
+  addBusiness(person_name,business_name, business_gst_number,image){
+    debugger;
         const obj={
           person_name:person_name,
           business_name:business_name,
-          business_gst_number:business_gst_number
+          business_gst_number:business_gst_number,
+          image:image
         };
+   
         console.log(obj);
        return this.http.post(`${url}/add`,obj);
   }
@@ -53,4 +56,12 @@ export class BusinessService {
   deleteBusinessData(id){
       return this.http.delete(`${url}/delete/${id}`);
   }
+  image(){
+    let headers= new HttpHeaders();
+    headers.append('Content-type','application/json');
+    return this.http.post('http://localhost:4000/',{headers:headers})
+    .pipe(map(res=>res))
+  }
+
+ 
 }
