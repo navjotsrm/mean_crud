@@ -1,3 +1,4 @@
+<app-header></app-header>
 <div class="card">
   <div class="card-body">
     <form [formGroup]="angForm" novalidate>
@@ -31,13 +32,16 @@
 
       <div class="form-group">
           <label class="col-md-4">Profile</label><br>
-          <!-- <input type="file" name="photo" ng2FileSelect uploader="uploader" formControlName="image" />
-          <button type="submit" class="btn btn-success btn-s" (click)="uploader.uploadAll()">Upload</button> -->
-          <button type="button" class="btn btn-warning" (click)=filePicker.click()>Upload Image</button>
-          <input type="file" #filePicker>
+          <!-- <input type="file" name="photo" ng2FileSelect [uploader]="uploader"/>
+          <button type="button" class="btn btn-success btn-s" (click)="uploader.uploadAll()">Upload</button> -->
+          <button type="button" class="btn btn-warning" (click)=filePicker.click()>Choose Image</button>
+          <input type="file" #filePicker (change)="onImagePicked($event)"> 
+          <div class="imagePreview" *ngIf="imagePreview!=='' && imagePreview">
+            <img [src]="imagePreview" [alt]="angForm.value.title">
+          </div>
         </div>
       <div class="form-group">
-        <button (click)="addBusiness(person_name.value,business_name.value,business_gst_number.value)" 
+        <button (click)="addBusiness(person_name.value,business_name.value,business_gst_number.value,Image)" 
         [disabled]="angForm.pristine || angForm.invalid" 
         class="btn btn-primary">Add Business</button>
       </div>

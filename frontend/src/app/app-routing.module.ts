@@ -5,6 +5,7 @@ import { GstEditComponent } from './gst-edit/gst-edit.component';
 import { GstGetComponent } from './gst-get/gst-get.component';
 
 const routes: Routes = [
+  {path:'', redirectTo:'business', pathMatch:'full'},
   {path:'business/create' ,component:GstAddComponent},
   {path:'business/edit/:id', component:GstEditComponent},
   {path:'business',component:GstGetComponent}

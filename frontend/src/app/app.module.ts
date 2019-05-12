@@ -9,7 +9,9 @@ import { GstEditComponent } from './gst-edit/gst-edit.component';
 import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-// import { FileSelectDirective } from 'ng2-file-upload';
+import { FileSelectDirective } from 'ng2-file-upload';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     GstAddComponent,
     GstGetComponent,
-    GstEditComponent
+    GstEditComponent,
+    HeaderComponent,
+    FileSelectDirective
   ],
   imports: [
     BrowserModule,
@@ -25,7 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
     SlimLoadingBarModule,
     ReactiveFormsModule,FormsModule,
     HttpClientModule,
-    // FileSelectDirective
+    Ng2SearchPipeModule
     
   ],
   providers: [],

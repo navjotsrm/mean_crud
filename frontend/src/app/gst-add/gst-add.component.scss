@@ -10,3 +10,10 @@ input[type="number"] {
 input[type="file"]{
     visibility:hidden;  
 }
+.imagePreview{
+    height: 5rem;
+    margin: 1rem 0;
+}
+.imagePreview img{
+    height:100%
+}

@@ -20,7 +20,7 @@ export class BusinessService {
   }
 
   addBusiness(person_name,business_name, business_gst_number,image){
-    debugger;
+   
         const obj={
           person_name:person_name,
           business_name:business_name,

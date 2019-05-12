@@ -1,3 +1,7 @@
+<app-header></app-header>
+  <div class="search-hero">
+    <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Search your business here...........">
+  </div>
 <table class="table table-hover">
 
   <thead>
@@ -7,12 +11,12 @@
         <td>business Name</td>
         <td>GST number</td>
         <td colspan="1">Actions</td>
-        <td colspan="4"><button [disabled]="!disableCheckbox" (click)="deleteBusinessAll()" class="btn btn-danger color">Delete All</button></td>
+        <td colspan="4"><button [disabled]="!disableCheckbox" (click)="deleteBusinessAll()" class="btn btn-danger color">Delete Selected</button></td>
       </tr>
 
   </thead>
   <tbody>
-    <tr *ngFor="let business of businessess;let i=index"> 
+    <tr *ngFor="let business of businessess | filter:searchText ;let i=index"> 
     <td> <input type="checkbox" [checked]="business.checked" (click)="changeCheck($event,i)"></td> 
       <td>{{business.person_name}}</td>
       <td>{{business.business_name}}</td>

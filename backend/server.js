@@ -22,6 +22,7 @@ mongoose.connect(config.DB, { useNewUrlParser: true }).then(
 );
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:false}))
 app.use(cors());
 
 app.get('/',(req,res)=>{
@@ -37,4 +38,4 @@ app.use(function (req, res, next) {
   next();
   });
 
-  app.use("/uploads",express.static(path.join(__dirname, '/uploads')));
+  app.use("/uploads",express.static(path.join(__dirname, './uploads')));

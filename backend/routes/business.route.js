@@ -26,12 +26,12 @@ businessRoutes.get('/images', function (req, res) {
   
   });
 
-businessRoutes.post('/image',upload.single('Image'), function (req, res) {
+businessRoutes.route('/image',upload.single('image')).post((req, res) =>{
   if (!req.file) {
       console.log("No file received");
       return res.send({
         success: false,
-        image:''
+        image:'',
       });
   
     } else {
@@ -45,7 +45,7 @@ businessRoutes.post('/image',upload.single('Image'), function (req, res) {
 
 });
 
-businessRoutes.route('/add',upload.single('Image')).post((req,res)=>{
+businessRoutes.route('/add',upload.single('image')).post((req,res)=>{
 
   const url= req.protocol + '://' + req.get("host");
         let business=  new Business({
@@ -57,7 +57,7 @@ businessRoutes.route('/add',upload.single('Image')).post((req,res)=>{
        
         business.save()
         .then(business=>{
-            res.status(200).json({'business':'business is added successfully'});
+            res.status(200).json({'business':'business is added successfully',business});
             console.log(business);
         })
         .catch(err=>{

@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class GstGetComponent implements OnInit {
   businessess:Business[];
   disableCheckbox=false;
+  searchText;
 
   constructor(private bs:BusinessService,private router:Router) {
    
@@ -67,6 +68,6 @@ getData(){
        deleteenable.forEach(y => {
          this.deleteBusiness(y._id);
        }); 
-      // $in:["_id","deleteenable"]
+      
   }
 }
