@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}\\frontend\\src\\app\\gst-get\\gst-get.component.ts",
+            "program": "${workspaceFolder}\\backend\\server.js",
             "outFiles": [
                 "${workspaceFolder}/**/*.js"
             ]

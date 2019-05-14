@@ -5,9 +5,13 @@ cors= require('cors'),
 mongoose= require('mongoose'),
 config= require('./DB');
 const businessRoute= require('./routes/business.route');
+const ejs= require('ejs');
 
 
 const app = express();
+
+// app.set('view engine','ejs');
+// app.get('/',(req,res)=>res.render('index'))
 
 let port = process.env.PORT || 4000;
 
@@ -22,7 +26,7 @@ mongoose.connect(config.DB, { useNewUrlParser: true }).then(
 );
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:false}))
+app.use(bodyParser.urlencoded({extended:true}))
 app.use(cors());
 
 app.get('/',(req,res)=>{
@@ -32,7 +36,7 @@ app.use('/business',businessRoute)
 
 app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST');
+  res.setHeader('Access-Control-Allow-Methods',"GET, POST, PATCH, PUT, DELETE, OPTIONS");
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
   res.setHeader('Access-Control-Allow-Credentials', true);
   next();

@@ -1,5 +1,4 @@
 const express= require('express');
-const app = express();
 const businessRoutes= express.Router();
 var multer = require('multer');
 var DIR = './uploads';
@@ -26,27 +25,26 @@ businessRoutes.get('/images', function (req, res) {
   
   });
 
-businessRoutes.route('/image',upload.single('image')).post((req, res) =>{
-  if (!req.file) {
-      console.log("No file received");
-      return res.send({
-        success: false,
-        image:'',
-      });
+  businessRoutes.post('/image',upload.single('Image'),(req, res)=> {
+    if (!req.file) {
+        console.log("No file received");
+        return res.send({
+          success: false,
+          image:''
+        });
+    
+      } else {
+        console.log('file received');
+        console.log(req.file.filename)
+        return res.send({
+          success: true,
+          image:req.file.filename
+        })
+      }
   
-    } else {
-      console.log('file received');
-      console.log(req.file.filename)
-      return res.send({
-        success: true,
-        image:req.file.filename
-      })
-    }
+  });
 
-});
-
-businessRoutes.route('/add',upload.single('image')).post((req,res)=>{
-
+businessRoutes.post('/add',upload.single('Image')),((req,res)=>{
   const url= req.protocol + '://' + req.get("host");
         let business=  new Business({
             person_name: req.body.person_name,

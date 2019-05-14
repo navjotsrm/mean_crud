@@ -19,17 +19,24 @@ export class BusinessService {
     console.log(url)
   }
 
-  addBusiness(person_name,business_name, business_gst_number,image){
-   
+  addBusiness(person_name,business_name, business_gst_number){
         const obj={
           person_name:person_name,
           business_name:business_name,
           business_gst_number:business_gst_number,
-          image:image
+         
+         
         };
    
         console.log(obj);
        return this.http.post(`${url}/add`,obj);
+  }
+
+  upload(formData){
+    debugger;
+    let headers= new HttpHeaders();
+    headers.append('Content-type','application/json');
+      return this.http.post("http://localhost:4000/business/image",formData,{headers:headers});
   }
 
   getBusiness(){
@@ -59,7 +66,7 @@ export class BusinessService {
   image(){
     let headers= new HttpHeaders();
     headers.append('Content-type','application/json');
-    return this.http.post('http://localhost:4000/',{headers:headers})
+    return this.http.post(`${url}`,{headers:headers})
     .pipe(map(res=>res))
   }
 
