@@ -5,7 +5,6 @@ cors= require('cors'),
 mongoose= require('mongoose'),
 config= require('./DB');
 const businessRoute= require('./routes/business.route');
-const ejs= require('ejs');
 
 
 const app = express();

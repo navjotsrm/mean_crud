@@ -19,11 +19,12 @@ export class BusinessService {
     console.log(url)
   }
 
-  addBusiness(person_name,business_name, business_gst_number){
+  addBusiness(person_name,business_name, business_gst_number,Image){
         const obj={
           person_name:person_name,
           business_name:business_name,
           business_gst_number:business_gst_number,
+          image:Image
          
          
         };

@@ -24,6 +24,7 @@ export class GstGetComponent implements OnInit {
 
 
 getData(){
+  debugger;
   this.bs.getBusiness().subscribe((data:Business[])=>{
     this.businessess=data;
     this.businessess.forEach(x=>{

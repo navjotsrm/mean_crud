@@ -38,7 +38,12 @@ export class GstAddComponent implements OnInit {
       let obh= JSON.parse(response);
       if(obh.success){
         console.log(obh.image);
+        this.data= obh.image;
+        this.addBusiness;
+
+
       }
+   
       
       alert('File uploaded successfully');
     },error=>{
@@ -47,7 +52,6 @@ export class GstAddComponent implements OnInit {
 
  
   }
-
    createForm(){
      this.angForm= this.fb.group({
        person_name:['',Validators.required],
@@ -73,8 +77,7 @@ reader.readAsDataURL(file);
       
   }
 
-  addBusiness(person_name,business_name,business_gst_number){ 
-    debugger;
+  addBusiness(person_name,business_name,business_gst_number){
     // let fileBrowser = this.filePicker.nativeElement;
     // if (fileBrowser.files && fileBrowser.files[0]) {
     //   // let formData = new FormData();
@@ -86,8 +89,7 @@ reader.readAsDataURL(file);
         
     //   });
     // }
-
-    this.bs.addBusiness(person_name,business_name,business_gst_number).subscribe((res)=>{
+    this.bs.addBusiness(person_name,business_name,business_gst_number,this.data).subscribe((res)=>{
           console.log("create business",res);
           this.router.navigate(['/business'])  
     })

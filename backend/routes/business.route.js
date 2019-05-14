@@ -44,7 +44,7 @@ businessRoutes.get('/images', function (req, res) {
   
   });
 
-businessRoutes.post('/add',upload.single('Image')),((req,res)=>{
+businessRoutes.post('/add',upload.single('Image'),(req,res)=>{
   const url= req.protocol + '://' + req.get("host");
         let business=  new Business({
             person_name: req.body.person_name,
