@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FileSelectDirective } from 'ng2-file-upload';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { HeaderComponent } from './header/header.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { HeaderComponent } from './header/header.component';
     SlimLoadingBarModule,
     ReactiveFormsModule,FormsModule,
     HttpClientModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    NgxPaginationModule
     
   ],
   providers: [],

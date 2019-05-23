@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -12,7 +12,7 @@ const url= 'http://localhost:4000/business';
 
 export class BusinessService {
   businessess: Business[];
-
+  showd = new EventEmitter<any>();
   data:any;
 
   constructor(private http:HttpClient) { 
@@ -69,6 +69,10 @@ export class BusinessService {
     headers.append('Content-type','application/json');
     return this.http.post(`${url}`,{headers:headers})
     .pipe(map(res=>res))
+  }
+
+  showData(){
+    return localStorage.getItem('show');
   }
 
  

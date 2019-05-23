@@ -26,13 +26,13 @@ export class GstAddComponent implements OnInit {
   angForm:FormGroup;
   imagePreview: string | ArrayBuffer;
   constructor(private fb:FormBuilder,private bs:BusinessService,private router:Router,private http:HttpClient,private el:ElementRef) {
+   
     this.createForm();
    }
    ngOnInit() {
      
     this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
-      debugger;
       console.log(response)
       console.log('ImageUpload:uploaded:'); 
       let obh= JSON.parse(response);
@@ -94,5 +94,8 @@ reader.readAsDataURL(file);
           this.router.navigate(['/business'])  
     })
    
+  }
+  ngAfterViewInit(): void {
+    this.bs.showd.emit(2);
   }
 }

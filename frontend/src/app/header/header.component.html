@@ -1,14 +1,14 @@
 <nav class="navbar nav-expand bg-light">
     <div class="container">
       <ul class="nav navbar-nav">
-    <li class="nav-item">
-      <a routerLink="create" class="nav-link" routerLinkActive="active">
+    <li class="nav-item" *ngIf="_route.url=='/business'">
+      <a routerLink="/create" class="nav-link" >
       Create Business
       </a>
     </li>
       </ul>
       <ul class="navbar-nav">
-     <li class="nav-item">
+     <li class="nav-item" *ngIf="_route.url=='/business/create'" >
       <a routerLink="/" class="nav-link">
       Show All Data
       </a>

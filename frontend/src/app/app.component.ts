@@ -6,6 +6,7 @@ import { NavigationCancel,
   NavigationError,
   NavigationStart,
   Router } from '@angular/router';
+import { BusinessService } from './business.service';
 
 
 
@@ -17,7 +18,8 @@ import { NavigationCancel,
 export class AppComponent {
   title = 'frontend';
 
-  constructor(private _loadingBar: SlimLoadingBarService, private _router: Router) {
+  constructor(private bs : BusinessService,private _loadingBar: SlimLoadingBarService, private _router: Router) {
+    
     this._router.events.subscribe((event: Event) => {
       this.navigationInterceptor(event);
     });
